@@ -1,0 +1,123 @@
+/* Animation styles for CommentList component */
+.sort-controls {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.sort-label {
+  font-weight: 600;
+  margin-right: 15px;
+}
+
+.sort-options {
+  display: flex;
+}
+
+.sort-option {
+  padding: 6px 12px;
+  margin-right: 8px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  color: #000000;
+  font-weight: 500;
+}
+
+.sort-option:hover {
+  background: #f1f3f5;
+  transform: translateY(-2px);
+}
+
+.sort-option.active {
+  background: #e7f5ff;
+  border-color: #74c0fc;
+  color: #000000;
+  font-weight: 600;
+}
+
+/* Removed tick symbol
+.sort-option.active:before {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 10px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.3s forwards;
+} */
+
+.comments-container {
+  transition: all 0.3s ease;
+}
+
+.comments-list {
+  position: relative;
+  transition: opacity 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.collapse-toggle {
+  padding: 8px 14px;
+  margin-left: auto;
+  background: #343a40;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.collapse-toggle:hover {
+  background: #495057;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.sort-animation {
+  animation: sortPulse 0.4s ease-out;
+}
+
+@keyframes sortPulse {
+  0% { opacity: 0.8; }
+  30% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  background-color: rgba(0,0,0,0.8);
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}

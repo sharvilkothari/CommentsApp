@@ -1,0 +1,264 @@
+/* Animation styles for CommentItem component */
+/* Base styles for comment structure */
+.comment {
+  position: relative;
+  padding: 15px;
+  margin-bottom: 12px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-left: 3px solid #e0e0e0;
+  transition: all 0.25s ease-out;
+}
+
+.comment-reply {
+  border-left: 3px solid #4a90e2;
+  position: relative;
+}
+
+.comment-header {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.comment-date {
+  font-size: 0.85em;
+  color: #888;
+}
+
+.comment-text {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.comment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* Upvote button styles */
+.upvote-btn {
+  transition: transform 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.upvote-btn:hover {
+  transform: translateY(-2px);
+  background-color: #f0f7ff;
+}
+
+.upvote-btn.active {
+  color: #333333;
+}
+
+.upvote-btn.active .upvote-icon {
+  color: #333333;
+  font-weight: bold;
+}
+
+.upvote-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.upvote-icon {
+  font-size: 14px;
+  margin-right: 2px;
+  color: #333333;
+}
+
+.vote-count {
+  transition: color 0.3s ease;
+  margin: 0 5px;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+.comment-vote-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+/* Animation for vote count change - smoother version */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  40% { transform: scale(1.15); opacity: 0.9; }
+  80% { transform: scale(0.95); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.vote-change {
+  animation: pulse 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* Animation for new comments - smoother with better timing function */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.new-comment {
+  animation: fadeIn 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+/* Reply animation - reduced intensity for less glitchiness */
+@keyframes slideIn {
+  from { 
+    opacity: 0; 
+    transform: translateX(10px); 
+    border-left-color: transparent;
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0);
+    border-left-color: inherit;
+  }
+}
+
+.reply-animation {
+  animation: slideIn 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+/* Animation for replies container */
+.replies-container {
+  position: relative;
+  overflow: hidden;
+  max-height: 2000px; /* Large enough to contain replies */
+  transition: max-height 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* Reply and action buttons */
+.comment-actions {
+  display: flex;
+  align-items: center;
+}
+
+.reply-button, .toggle-button {
+  background: none;
+  border: none;
+  color: #4a90e2;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-right: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.reply-button:hover, .toggle-button:hover {
+  background-color: #f0f7ff;
+  color: #1c7ed6;
+}
+
+.reply-count {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Collapsed indicator */
+.collapsed-indicator {
+  cursor: pointer;
+  padding: 6px 10px;
+  margin-left: 35px;
+  margin-bottom: 10px;
+  display: inline-block;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: #555;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.collapsed-indicator:before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 0;
+  height: 50%;
+  width: 2px;
+  background-color: #4a90e2;
+}
+
+.collapsed-indicator:hover {
+  background-color: #e9ecef;
+}
+
+.collapsed-text {
+  display: flex;
+  align-items: center;
+}
+
+.collapsed-text:before {
+  content: "▶";
+  margin-right: 5px;
+  font-size: 0.8em;
+}
+
+/* Nested reply vertical lines */
+.replies-container {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 15px;
+  border-left: 2px solid #4a90e2;
+  transition: border-left-width 0.2s ease;
+}
+
+.replies-container:hover {
+  border-left-width: 3px;
+}
+
+/* Different colors for different nesting levels */
+.replies-level-0 {
+  border-left-color: #4a90e2; /* First level - standard blue */
+}
+
+.replies-level-1 {
+  border-left-color: #5596e6; /* Second level - slightly lighter */
+}
+
+.replies-level-2 {
+  border-left-color: #61a0f8; /* Third level */
+}
+
+.replies-level-3 {
+  border-left-color: #75b2ff; /* Fourth level - lighter */
+}
+
+.replies-level-4 {
+  border-left-color: #8bbfff; /* Fifth level - even lighter */
+}
+
+.replies-level-5, .replies-level-6, .replies-level-7, .replies-level-8, .replies-level-9 {
+  border-left-color: #a1cfff; /* Deepest levels - lightest */
+}
+
+/* Button animation */
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
